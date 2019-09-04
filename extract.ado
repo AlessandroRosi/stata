@@ -4,27 +4,39 @@ version 16
 						gettoken f 0:0
 						if "`f'"=="help" {
 							di ""
-							di "___________________________________________________________________________________________________________________________"
-							di as result "extract" as text " salva per ogni blocco un dta con n variabili (attributi) spalmate per le x osservazioni dei vettori estratti"
-							di as text "I blocchi devono essere uguali nella struttura, alla stessa distanza e di lungheza uguale" 
-							di as text "il primo blocco deve iniziare da 1"
+							di "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"
 							di ""
-							di "___________________________________________________________________________________________________________________________"
-							di 	as result "interval("as text"integer-integer"as result")" as text " prima osservazione e ultima osservazione del vettore da estrarre dal primo blocco"
-							di 	as result "block("as text"integer"as result")"  as text " lunghezza complessiva del blocco (spazio tra la fine del primo blocco e l'inizio del successivo incluso)"
-							di 	as result "nblock("as text"integer"as result")" as text " numero di blocchi"
-							di 	as result "xatt("as text"integer integer ..."as result")" as text " x del primo attributo, x del secondo attributo ecc."
-							di 	as result "yatt("as text"string string ..."as result")" as text " y del primo attributo, y del secondo attributo ecc. (usa nome variabile)"
-							di 	as result "latt("as text"string string ..."as result")" as text " nome variabile primo attributo nome variabile secondo attributo ecc."
-							di 	as result "xlvar("as text"integer"as result")" as text " numero riga dove si trovano i nomi delle variabili del primo blocco"
-							di 	as result "path("as text"string"as result")" as text " percorso dove si trova il file e dove verranno salvati i dta"
+							di as result "extract"  
+							di as text "  salva per ogni blocco un dta con n variabili formate dai vettori estratti e dagli attributi spalmati per tutte le osservazioni "
+							di as text "  I blocchi devono essere uguali nella struttura, alla stessa distanza e di lungheza uguale" 
+							di as text "  il primo blocco deve iniziare da 1"
 							di ""
+							di "		      ────────────────────────────────────────────────────────────────────────────────"
+							di as result "			extract"as text" varlist"as result","as text" xatt() yatt() latt() xlvar() interval() block() nblock() path()"
+							di "		      ────────────────────────────────────────────────────────────────────────────────"
+							di ""
+							di 	as result "- varlist" as text "			    nome variabile delle colonne da estrarre"
+							di 	as result "- interval("as text" integer-integer "as result")" as text "	prima osservazione e ultima osservazione del vettore da estrarre dal primo blocco"
+							di 	as result "- block("as text" integer "as result")"  as text "		 lunghezza del blocco (incluso spazio tra la fine del primo blocco e l'inizio del successivo)"
+							di 	as result "- nblock("as text" integer "as result")" as text "		numero di blocchi"
+							di 	as result "- xatt("as text" integer integer ... "as result")" as text "	x del primo attributo, x del secondo attributo ecc."
+							di 	as result "- yatt("as text" string string ... "as result")" as text "	y del primo attributo, y del secondo attributo ecc. (usa nome variabile)"
+							di 	as result "- latt("as text" string string ... "as result")" as text "	nome variabile primo attributo nome variabile secondo attributo ecc."
+							di 	as result "- xlvar("as text" integer "as result")" as text "		numero riga dove si trovano i nomi delle variabili del primo blocco"
+							di 	as result "- path("as text" string "as result")" as text "		percorso dove si trova il file e dove verranno salvati i dta"
+							di ""
+							di "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"
+							di ""
+							
 						exit
 									
 							clear all
 							use prova/provaprova, clear
+							extract help
+							
+							
 							extract var1 var2 var3 var4, xatt(1 2) yatt(var1 var1) latt(sesso anno) xlvar(3) interval(4-8) block(9) nblock(6) path(prova/provaprova) 
-						
+							
 						}
 	
 
